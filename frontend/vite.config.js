@@ -1,5 +1,4 @@
 import path from 'path';
-
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 
@@ -9,7 +8,7 @@ export default ({ mode }) => {
   const proxy_url =
     process.env.VITE_DEV_REMOTE === 'remote'
       ? process.env.VITE_BACKEND_SERVER
-      : 'http://localhost:8888/';
+      : 'http://backend:5000/';
 
   const config = {
     plugins: [react()],
@@ -20,6 +19,7 @@ export default ({ mode }) => {
       },
     },
     server: {
+      host: '0.0.0.0',
       port: 3000,
       proxy: {
         '/api': {
@@ -27,8 +27,14 @@ export default ({ mode }) => {
           changeOrigin: true,
           secure: false,
         },
+        '/download': {
+          target: proxy_url,
+          changeOrigin: true,
+          secure: false,
+        },
       },
     },
   };
+
   return defineConfig(config);
 };
