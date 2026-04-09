@@ -52,10 +52,9 @@ async function setupApp() {
     console.log('👍 Settings created : Done!');
 
     const PaymentMode = require('../models/appModels/Payment');
-    const Taxes = require('../models/appModels/Taxes');
 
-    await Taxes.insertMany([{ taxName: 'Tax 0%', taxValue: '0', isDefault: true }]);
-    console.log('👍 Taxes created : Done!');
+    
+    console.log(' Taxes was removed!');
 
     await PaymentMode.insertMany([
       {
