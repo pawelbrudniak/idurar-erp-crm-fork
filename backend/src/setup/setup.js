@@ -51,19 +51,9 @@ async function setupApp() {
 
     console.log('👍 Settings created : Done!');
 
-    const PaymentMode = require('../models/appModels/Payment');
-
-    
     console.log(' Taxes was removed!');
 
-    await PaymentMode.insertMany([
-      {
-        name: 'Default Payment',
-        description: 'Default Payment Mode (Cash , Wire Transfer)',
-        isDefault: true,
-      },
-    ]);
-    console.log('👍 PaymentMode created : Done!');
+    console.log('👍 PaymentMode was removed!');
 
     console.log('🥳 Setup completed :Success!');
     process.exit();
